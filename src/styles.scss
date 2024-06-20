@@ -1,4 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { min-height: 100vh; height: auto; }
+body { 
+    margin: 0; 
+    font-family: 'Kanit', sans-serif;
+}
+
+:root {
+    --primary: #1b2441;
+    --primary-light: #2d3b63; 
+    --primary-dark: #101631;  
+    --primary-contrast: #ffffff;
+
+    --secondary: #1B1A55;
+    --secondary-light: #3A397A;
+    --secondary-dark: #121140;
+
+    --complementary-primary: #3b446c;  
+    --complementary-primary-light: #5d6991; 
+    --complementary-primary-dark: #2c334d;  
+    --complementary-secondary: #6868a8;  
+    --complementary-secondary-light: #8989c1; 
+    --complementary-secondary-dark: #4e4e85;  
+
+    --negative-red: #D11A2A;
+
+  
+    --white: #ffffff;
+    --black: #000000;
+    --gray-light: #e0e0e0;
+    --gray-dark: #4a4a4a;
+}
+
+.flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.full-height {
+    height: 100vh;
+    box-sizing: border-box; 
+}
+
+.icon-remove {
+    color: var(--negative-red);
+    cursor: pointer;
+} 

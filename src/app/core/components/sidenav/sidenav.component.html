@@ -1,0 +1,26 @@
+<div class="container">
+
+    <img
+        (click)="router.navigate([AppUrlEnum.USER + '/' + AppUrlEnum.LIST])"
+        class="logo" 
+        src="../../../../assets/img/eubet-log.jpg" alt="">
+    
+    <button 
+        mat-flat-button 
+        color="primary" 
+        (click)="router.navigate([AppUrlEnum.USER + '/' + AppUrlEnum.ADD])">
+        Add New User
+    </button>
+    <mat-divider></mat-divider>
+    <div class="filter">
+        @if (filterShouldBeDisplayed) {
+            @if(!showFilter) {
+                <button mat-flat-button color="primary" (click)="showFilter = !showFilter">Show Filter</button>
+            } @else {
+                <button mat-flat-button color="warn" (click)="showFilter = !showFilter">Hide Filter</button>
+                <filter></filter>
+            }
+        }
+    </div>
+    
+</div>

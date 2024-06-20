@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="select">
+    <mat-form-field>
+      <mat-label>Filter By Fields</mat-label>
+      <mat-select [formControl]="optionsChosen" multiple>
+        @for (option of filterOptions; track option.value) {
+          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="filter">
+    <form [formGroup]="filterForm">
+        @for (option of formConfigArray; track option.value) {
+          @if(option.value === 'gender') {
+            <mat-form-field appearance="fill">
+              <mat-label>Gender</mat-label>
+              <mat-select id="gender" formControlName="gender">
+              <mat-option value="">Select Gender</mat-option>
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+              </mat-select>
+              <mat-error *ngIf="filterForm.get('gender')?.invalid && filterForm.get('gender')?.touched">
+              Gender is required.
+              </mat-error>
+            </mat-form-field>
+          } @else {
+            <mat-form-field appearance="fill">
+              <mat-label>{{ option.label }}</mat-label>
+              <input matInput [formControlName]="option.value" [placeholder]="option.placeholder!" [mask]="option.mask" >
+              <mat-error *ngIf="filterForm.get('firstName')?.invalid && filterForm.get('firstName')?.touched">
+              <div *ngIf="filterForm.get(option.value)?.errors?.['minlength']"> {{ option.label }} should be at least {{ option.minLength }} characters.</div>
+              <div *ngIf="filterForm.get(option.value)?.errors?.['maxlength']"> {{ option.label }} should be max {{ option.maxLength }} characters.</div>
+              </mat-error>
+            </mat-form-field>
+          }
+        }
+        <div class="flex">
+          @if ( isFormFilled ) {
+            <div class="flex">
+              <button (click)="onSubmit(filterForm.value)" mat-raised-button color="primary" type="submit" [disabled]="filterForm.invalid">Filter</button>
+            </div>
+          } 
+          @if (filterExecuted) {
+            <button (click)="showAllUsers()" mat-raised-button color="warn" >Show All Users</button>
+          }
+        </div>
+  </form>
+  </div>
+</div>

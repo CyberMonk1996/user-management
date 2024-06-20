@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    width: 100vw;
+    // height: 100vh;
+    overflow: hidden;
+}
+
+.sidenav {
+    width: 20vw; /* Adjust as necessary */
+    height: 100%;
+    position: relative; 
+    background: #f0f0f0; /* Example background */
+}
+
+.outlet {
+    flex-grow: 1;
+    // height: 100%;
+    overflow: auto;
+    background: #fff; /* Example background */
+}

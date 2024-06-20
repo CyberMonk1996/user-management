@@ -1,0 +1,23 @@
+.container {
+    width: 20vw;
+    height: 100vh;
+    background-color: var(--primary);
+    color: var(--gray-light);
+}
+
+.logo {
+    width: 20vw;
+    height: 10vh;
+    cursor: pointer;
+}
+
+.route {
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+    color: var(--complementary-secondary-light);
+    cursor: pointer;
+}
+
+button {
+    margin: 14px;
+}

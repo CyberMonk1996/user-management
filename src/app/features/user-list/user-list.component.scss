@@ -1,0 +1,60 @@
+:host {
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom right, var(--primary-dark), var(--complementary-secondary));
+    padding: 20px 40px;
+    box-sizing: border-box; 
+    min-height: 100vh;
+    height: auto !important;
+    overflow: auto;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-header-row {
+    background-color: var(--primary); /* Optional: Add your background color */
+    border-radius: 10px; /* Adjust as needed */
+    overflow: hidden; /* Ensures that the rounded corners are visible */
+}
+
+:host::ng-deep .mat-mdc-header-row {
+    cursor: pointer;
+    background: linear-gradient(to top right, var(--primary-dark), var(--secondary-dark));
+}
+
+tr {
+    background: linear-gradient(to top right, var(--secondary), var(--secondary-light));
+    color: #fff;
+}
+
+:host::ng-deep .mat-mdc-row:hover {
+    opacity: 0.9;
+    cursor: pointer;
+} 
+
+td, th {
+    font-size: 16px;
+    font-family: 'Kanit', sans-serif;
+    color: var(--complementary-secondary-light);
+}
+
+mat-paginator {
+    min-width: 835.5px;
+}
+
+
+
+.user-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}

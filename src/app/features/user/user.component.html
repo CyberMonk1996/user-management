@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="left full-height">
+        <div class="flex flex-center">
+            @if(userForm.get('img')?.value) {
+                <img class="uploaded-img" [src]="userForm.get('img')?.value" alt="Uploaded Image">
+            } @else {
+                <img class="uploaded-img" [src]="defaultImgUrl" alt="Placeholder Image">
+            }
+    
+            @if(showFooterButtons) {
+                <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="imageInputChange($event)" accept="image/*"/>
+                <button mat-flat-button color="primary" (click)="imageInput.click()">Upload Image</button>
+    
+                @if(userForm.get('img')?.value) {
+                    <button mat-raised-button color="warn" (click)="deleteImage()">Delete Image</button>
+                }
+            }
+        </div>
+    </div>
+    <div class="right full-height">
+        <div class="right-header">
+            <h1>User Information</h1>
+        </div>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+            <div class="flex" style="max-width: 600px;">
+                <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput id="firstName" formControlName="firstName" placeholder="Enter first name" mask="S*" >
+                    <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">
+                    <div *ngIf="userForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+                    <div *ngIf="userForm.get('firstName')?.errors?.['minlength']">First Name should be at least 2 characters.</div>
+                    <div *ngIf="userForm.get('firstName')?.errors?.['maxlength']">First Name should be max 50 characters.</div>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput id="lastName" formControlName="lastName" placeholder="Enter last name" mask="S*">
+                    <mat-error *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
+                        <div *ngIf="userForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
+                        <div *ngIf="userForm.get('lastName')?.errors?.['minlength']">Last Name should be at least 2 characters.</div>
+                        <div *ngIf="userForm.get('lastName')?.errors?.['maxlength']">Last Name should be max 50 characters.</div>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Gender</mat-label>
+                    <mat-select id="gender" formControlName="gender">
+                    <mat-option value="">Select Gender</mat-option>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="userForm.get('gender')?.invalid && userForm.get('gender')?.touched">
+                    Gender is required.
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>ID Number</mat-label>
+                    <input matInput type="number" id="idNumber" formControlName="idNumber" placeholder="Enter ID number" mask="00000000000">
+                    <mat-error *ngIf="userForm.get('idNumber')?.invalid && userForm.get('idNumber')?.touched">
+                    <div *ngIf="userForm.get('idNumber')?.errors?.['required']">ID number is required.</div>
+                    <div *ngIf="userForm.get('idNumber')?.errors?.['minlength']">ID number must be exactly 11 characters.</div>
+                    <div *ngIf="userForm.get('idNumber')?.errors?.['maxlength']">ID number must be exactly 11 characters.</div>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone</mat-label>
+                    <input matInput id="phone" formControlName="phone" placeholder="Enter phone number" mask="000000000">
+                    <mat-error *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+                    <div *ngIf="userForm.get('phone')?.errors?.['required']">Phone is required.</div>
+                    <div *ngIf="userForm.get('phone')?.errors?.['minlength']">Phone number must be exactly 9 characters.</div>
+                    <div *ngIf="userForm.get('phone')?.errors?.['maxlength']">Phone number must be exactly 9 characters.</div>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <input matInput id="address" formControlName="address" placeholder="Enter address" >
+                    <mat-error *ngIf="userForm.get('address')?.invalid && userForm.get('address')?.touched">
+                    Address is required.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            @if(showFooterButtons) {
+                <div class="footer-button-container">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">Submit</button>
+                    <button mat-raised-button color="warn" (click)="cancelModification()">Cancel Modification</button>
+                </div> 
+            }  @else {
+                <button mat-raised-button (click)="modifyUser()">Modify User</button>
+            } 
+        </form>
+    
+        @if(store.currentUser().firstName) {
+            <div class="bonus-section">
+                <h1>Bonuses</h1>
+                <bonus-list [currentUser]="store.currentUser()"></bonus-list>
+            </div>
+        }
+    </div>
+</div>
+
+  

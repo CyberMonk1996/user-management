@@ -1,0 +1,11 @@
+@if(!store.loading()) {
+  <div class="flex">
+    @for(bonus of store.currentUserBonuses(); track bonus){
+      <bonus-card [bonus]="bonus"></bonus-card>
+    }@empty {
+      <h2>no bonuses</h2>
+    }
+  </div>
+  } @else {
+  <mat-spinner></mat-spinner>
+  }

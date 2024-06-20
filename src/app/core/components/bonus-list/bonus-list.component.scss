@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom right, var(--primary-dark), var(--complementary-secondary));
+  box-sizing: border-box;
+  max-width: 400px;
+  border-radius: 20px;
+}
+
+.right-header{
+    margin: 2rem 0 0 1.5rem;
+  
+    h1 {
+        color: var(--complementary-secondary-light);
+        font-size: 50px;
+        font-family: 'Kanit', sans-serif;
+        width: max-content;
+    }
+  }
+  

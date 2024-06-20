@@ -1,0 +1,1 @@
+export const defaultImageUrl = 'https://cdn1.suno.ai/image_4c8d7e14-639b-4876-a245-7f79f52979bc.png';
